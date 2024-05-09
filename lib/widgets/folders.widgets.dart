@@ -11,7 +11,7 @@ class FolderWidgets {
     }
     if (archive.nivel == 2) {
       return _conjunto(
-          screen: screen, titleConjunto: archive.title);
+          screen: screen, titleConjunto: archive.title, context: context);
     }
     if (archive.nivel == 3) {
       return _equipamneto(screen: screen, titleEquipamento: archive.title);
@@ -66,6 +66,7 @@ class FolderWidgets {
   static _conjunto({
     required Size screen,
     required String titleConjunto,
+    required BuildContext context
   }) {
     return Padding(
       padding: EdgeInsets.only(
@@ -82,7 +83,58 @@ class FolderWidgets {
               style: const TextStyle(color: Colors.black, fontSize: 22),
             ),
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Container(
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(25), topRight: Radius.circular(25)),
+              color: Colors.white,
+            ),
+            padding: EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                const Text(
+                  'Edit equipment name',
+                  style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
+                const SizedBox(height: 8),
+                const TextField(
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(
+                      Icons.edit_outlined,
+                      color: Colors.pink,
+                    ),
+                    border: null,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('Save', style: TextStyle(fontSize: 20),),
+                ),
+                 SizedBox(height: 16),
+                ElevatedButton(
+                  style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(Colors.white54)),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('Cancel', style: TextStyle(fontSize: 20, color: Colors.pink),),
+                ),
+              ],
+            ),
+          );
+        });
+                },
                 icon: Icon(
                   Icons.edit_outlined,
                   color: Colors.pink,
