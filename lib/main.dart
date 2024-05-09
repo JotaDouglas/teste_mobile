@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:teste_mobile/routes/routes.dart';
 import 'package:teste_mobile/views/auth.view.dart';
+import 'package:teste_mobile/views/home.view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,17 +21,17 @@ class MyApp extends StatelessWidget {
           primary: Colors.white,
           secondary: Colors.pink,
           background: Colors.pink,
-          surface: Colors.pink[600] ?? Colors.pink,
+          surface: Colors.pink,
           error: Colors.yellow,
         ),
         textTheme: const TextTheme(
-          bodyMedium: TextStyle(color: Colors.black), // cor da fonte do widget text
+          bodyMedium: TextStyle(color: Colors.pink), // cor da fonte do widget text
         ),
         useMaterial3: true,
       ),
       routes: {
         AppRoutes.AUTH_PAGE: (ctx) => const AuthPage(),
-        AppRoutes.HOME_PAGE: (ctx) => const AuthPage(),
+        AppRoutes.HOME_PAGE: (ctx) => const HomePage(),
       },
     );
   }
