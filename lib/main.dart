@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:teste_mobile/controllers/folder.controller.dart';
 import 'package:teste_mobile/routes/routes.dart';
 import 'package:teste_mobile/views/auth.view.dart';
 import 'package:teste_mobile/views/home.view.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(providers: [
+      ChangeNotifierProvider(create: (context) => FolderController()),
+    ], child: const MyApp(),)
+    
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -17,7 +24,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.light(
+        colorScheme: const ColorScheme.light(
           primary: Colors.white,
           secondary: Colors.pink,
           background: Colors.pink,
@@ -25,7 +32,8 @@ class MyApp extends StatelessWidget {
           error: Colors.yellow,
         ),
         textTheme: const TextTheme(
-          bodyMedium: TextStyle(color: Colors.pink), // cor da fonte do widget text
+          bodyMedium:
+              TextStyle(color: Colors.pink), // cor da fonte do widget text
         ),
         useMaterial3: true,
       ),
