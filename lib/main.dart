@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:teste_mobile/controllers/folder.controller.dart';
+import 'package:teste_mobile/controllers/user.controller.dart';
 import 'package:teste_mobile/routes/routes.dart';
 import 'package:teste_mobile/views/auth.view.dart';
 import 'package:teste_mobile/views/home.view.dart';
 
 void main() {
-  runApp(
-    MultiProvider(providers: [
+  runApp(MultiProvider(
+    providers: [
       ChangeNotifierProvider(create: (context) => FolderController()),
-    ], child: const MyApp(),)
-    
-  );
+      ChangeNotifierProvider(create: (context) => UserController()),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
