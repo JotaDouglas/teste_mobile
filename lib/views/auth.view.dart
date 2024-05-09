@@ -20,6 +20,7 @@ class _AuthPageState extends State<AuthPage> {
   Widget build(BuildContext context) {
     final screen = MediaQuery.of(context).size;
     final radio = screen.width * 0.3;
+    final radioIcon = screen.width * 0.1;
     var finalUser = Provider.of<UserController>(context, listen: false).user;
     return Scaffold(
       body: SingleChildScrollView(
@@ -29,10 +30,19 @@ class _AuthPageState extends State<AuthPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Icon(
-                Icons.person,
-                color: Theme.of(context).colorScheme.primary,
-                size: screen.height * 0.1,
+              Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(radioIcon),
+                        topLeft: Radius.circular(radioIcon),
+                        bottomLeft: Radius.circular(screen.width * 0.02),
+                        topRight: Radius.circular(screen.width * 0.02))),
+                child: Icon(
+                  Icons.person,
+                  color: Theme.of(context).colorScheme.secondary,
+                  size: screen.height * 0.1,
+                ),
               ),
               SizedBox(
                 height: screen.height * 0.05,

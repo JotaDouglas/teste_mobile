@@ -24,6 +24,8 @@ class _HomePageState extends State<HomePage> {
     final radio = screen.width * 0.1;
     return Scaffold(
       appBar: AppBar(
+        surfaceTintColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
         leading: IconButton(
           onPressed: () {
             goBack();
@@ -44,27 +46,30 @@ class _HomePageState extends State<HomePage> {
                 child: SizedBox(
                   width: screen.width,
                   height: screen.height * 0.1,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      const Text(
-                        "HELLO",
-                        style: TextStyle(color: Colors.white, fontSize: 17),
-                      ),
-                      Text(
-                        finalUser.userName != ""
-                            ? finalUser.userName
-                            : "Username",
-                        style:
-                            const TextStyle(color: Colors.white, fontSize: 25),
-                      ),
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.all(2.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        const Text(
+                          "HELLO",
+                          style: TextStyle(color: Colors.white, fontSize: 15),
+                        ),
+                        Text(
+                          finalUser.userName != ""
+                              ? finalUser.userName
+                              : "Username",
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 25),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
               SizedBox(
-                height: screen.height * 0.05,
+                height: screen.height * 0.02,
               ),
               Container(
                 height: screen.height * 0.75,
